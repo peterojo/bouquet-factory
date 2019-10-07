@@ -33,13 +33,18 @@ class BouquetFactory
 
     public function getCompleteBouquet()
     {
-        foreach ($this->bouquetDesigns as $bouquetDesign) {
+        foreach ($this->bouquetDesigns as $index => $bouquetDesign) {
             if ($bouquetDesign->isComplete()) {
-                // TODO remove this design
+                unset($this->bouquetDesigns[$index]);
                 return $bouquetDesign->displayBouquet();
             }
         }
 
         return null;
+    }
+
+    public function allBouquetsCompleted()
+    {
+	return empty($this->bouquetDesigns);
     }
 }
