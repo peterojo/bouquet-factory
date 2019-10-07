@@ -22,12 +22,17 @@ class BouquetFactoryCommand extends Command
 
         $bouquetFactory = new BouquetFactory($bouquets);
 
-        while ($flower = readline() && !$bouquetFactory->allBouquetsCompleted()) {
+        while ($flower = readline()) {
             $bouquetFactory->addFlower(new Flower($flower));
-	    if ($bouquetFactory->getCompleteBouquet()) {
-		$output->writeln('<info>-----</info>');
-		$output->writeln('<info>' . $bouquetFactory->getCompleteBouquet() . '</info>');
-		$output->writeln('<info>-----</info>');
+            $completeBouquet = $bouquetFactory->getCompleteBouquet();
+            if (!is_null($completeBouquet)) {
+                $output->writeln('<info>-----</info>');
+                $output->writeln('<info>' . $completeBouquet . '</info>');
+                $output->writeln('<info>-----</info>');
+            }
+            if ($bouquetFactory->allBouquetsCompleted()) {
+                $output->writeln('<info>All requested bouquets have been delivered. Time to go home!!!</info>');
+                break;
             }
         }
     }

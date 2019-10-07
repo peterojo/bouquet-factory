@@ -36,7 +36,7 @@ class BouquetDesign
             }
             $this->requiredFlowers = $flowers[0];
             for ($i = 0; $i < count($flowers['quantity']); $i++) {
-                $this->requiredQuantities[$flowers['specie'][$i]] = $flowers['specie'][$i];
+                $this->requiredQuantities[$flowers['specie'][$i]] = (int) $flowers['quantity'][$i];
             }
         } else {
             throw new InvalidRepresentationException($this->spec . ' is not a valid Bouquet Design representation.');
