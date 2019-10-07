@@ -3,6 +3,7 @@
 namespace Bouquet\Command;
 
 use Bouquet\Entity\BouquetDesign;
+use Bouquet\Entity\BouquetFactory;
 use Bouquet\Entity\Flower;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,17 +20,17 @@ class BouquetFactoryCommand extends Command
             $bouquets[] = new BouquetDesign($bouquet);
         }
 
-        $flowers = [];
+        $bouquetFactory = new BouquetFactory($bouquets);
+
         while ($flower = readline()) {
-            $flowers[] = new Flower($flower);
+            $bouquetFactory->addFlower(new Flower($flower));
+            if ($bouquetFactory->getCompleteBouquet()) {
+                $output->writeln('<info>' . $bouquetFactory->getCompleteBouquet() . '</info>');
+            }
         }
 
-        foreach ($bouquets as $bouquet) {
+        /*foreach ($bouquets as $bouquet) {
             $output->writeln("<comment>Bouquet: ".$bouquet->getSpec()."</comment>");
-        }
-        $output->writeln('');
-        foreach ($flowers as $flower) {
-            $output->writeln('Flower: '.$flower->getSpec());
-        }
+        }*/
     }
 }

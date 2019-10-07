@@ -30,4 +30,14 @@ class Flower
     {
         return $this->spec;
     }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function getSpecie()
+    {
+        return $this->specie;
+    }
 }
