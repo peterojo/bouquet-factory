@@ -3,8 +3,8 @@ This CLI app produces bouquets of flowers from input received.
 
 #### Input format
 ```
-<bouquet 1 spec>
-<bouquet 2 spec>
+<bouquet design 1>
+<bouquet design 2>
 ...
 <blank line>
 <flower 1>
@@ -27,15 +27,12 @@ All requested bouquets have been delivered. Time to go home!!!
 - A *bouquet size* is indicated by a single, uppercase letter: L (large) and S (small).
 - A *bouquet design* is single line of characters with the following format:
 ```
-<bouquet name><bouquet size><flower 1 quantity><flower 1
-specie>...<flower N quantity><flower N specie><total quantity of
-flowers in the bouquet>
+<bouquet name><bouquet size><flower 1 quantity><flower 1 specie>...<flower N quantity><flower N specie><total quantity of flowers in the bouquet>
 ```
 Example: AL8d10r5t30
 - A *bouquet* is single line of characters with the following format:
 ```
-<bouquet name><bouquet size><flower 1 quantity><flower 1
-specie>...<flower N quantity><flower N specie>
+<bouquet name><bouquet size><flower 1 quantity><flower 1 specie>...<flower N quantity><flower N specie>
 ```
 Example: AL8d10r5t7z
 - The *bouquet design* and *bouquet* formats includes a *bouquet size* but no *flower sizes*. This is because large *bouquets* are only made
